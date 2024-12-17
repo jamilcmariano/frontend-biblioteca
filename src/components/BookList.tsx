@@ -1,51 +1,23 @@
-import { useState, useEffect } from 'react';
-import { Book, Author } from '../types';
-import { getAllBooks, getAuthors } from '../services/api';
+import { useBooks } from '../hooks/useBooks';
+import { useAuthors } from '../hooks/useAuthors';
 import BookCard from './BookCard';
+import LoadingSpinner from './ui/LoadingSpinner';
+import ErrorMessage from './ui/ErrorMessage';
 
 export default function BookList() {
-  const [books, setBooks] = useState<Book[]>([]);
-  const [authors, setAuthors] = useState<Author[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [booksData, authorsData] = await Promise.all([
-          getAllBooks(),
-          getAuthors(),
-        ]);
-        setBooks(booksData);
-        setAuthors(authorsData);
-      } catch (err) {
-        setError('Failed to fetch library data');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const { books, loading: booksLoading, error: booksError } = useBooks();
+  const { authors, loading: authorsLoading, error: authorsError } = useAuthors();
 
   const getAuthorName = (authorId: number) => {
     return authors.find(author => author.id === authorId)?.nombre;
   };
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-[200px]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
-      </div>
-    );
+  if (booksLoading || authorsLoading) {
+    return <LoadingSpinner />;
   }
 
-  if (error) {
-    return (
-      <div className="text-center text-red-600 p-4">
-        <p>{error}</p>
-      </div>
-    );
+  if (booksError || authorsError) {
+    return <ErrorMessage message={booksError || authorsError || 'An error occurred'} />;
   }
 
   return (
