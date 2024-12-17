@@ -6,7 +6,6 @@ export const getAllBooks = async (): Promise<Book[]> => {
   try {
     const response = await fetch(`${API_CONFIG.BASE_URL}/libros`, {
       headers: API_CONFIG.HEADERS,
-      mode: 'cors',
     });
     return handleResponse<Book[]>(response);
   } catch (error) {
@@ -18,7 +17,6 @@ export const getAvailableBooks = async (): Promise<Book[]> => {
   try {
     const response = await fetch(`${API_CONFIG.BASE_URL}/libros/disponibles`, {
       headers: API_CONFIG.HEADERS,
-      mode: 'cors',
     });
     return handleResponse<Book[]>(response);
   } catch (error) {
@@ -30,7 +28,6 @@ export const getUnavailableBooks = async (): Promise<Book[]> => {
   try {
     const response = await fetch(`${API_CONFIG.BASE_URL}/libros/nodisponibles`, {
       headers: API_CONFIG.HEADERS,
-      mode: 'cors',
     });
     return handleResponse<Book[]>(response);
   } catch (error) {

@@ -1,7 +1,7 @@
 export const API_CONFIG = {
-  BASE_URL: 'https://api-biblioteca-five.vercel.app',
+  // Using relative path for proxy
+  BASE_URL: '/api',
   HEADERS: {
     'Content-Type': 'application/json',
-    // Add any additional headers here
   },
 };

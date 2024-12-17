@@ -6,7 +6,6 @@ export const getAuthors = async (): Promise<Author[]> => {
   try {
     const response = await fetch(`${API_CONFIG.BASE_URL}/autores`, {
       headers: API_CONFIG.HEADERS,
-      mode: 'cors',
     });
     return handleResponse<Author[]>(response);
   } catch (error) {
