@@ -13,7 +13,7 @@ export default function BookCard({ book, author }: BookCardProps) {
         <div className="flex-1">
           <h3 className="text-lg font-semibold text-gray-900">{book.titulo}</h3>
           {author && (
-            <p className="text-sm text-gray-600 mt-1">by {author}</p>
+            <p className="text-sm text-gray-600 mt-1">por {author}</p>
           )}
         </div>
         <BookOpen className="w-6 h-6 text-blue-500" />
@@ -26,7 +26,7 @@ export default function BookCard({ book, author }: BookCardProps) {
               : 'bg-red-100 text-red-800'
           }`}
         >
-          {book.disponible ? 'Available' : 'Checked Out'}
+          {book.disponible ? 'Disponible' : 'No disponible'}
         </span>
       </div>
     </div>
