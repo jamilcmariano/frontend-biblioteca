@@ -4,7 +4,7 @@ import { handleResponse } from '../utils/apiUtils';
 
 export const getAllBooks = async (): Promise<Book[]> => {
   try {
-    const response = await fetch(`${API_CONFIG.BASE_URL}/libros`, {
+    const response = await fetch(`${API_CONFIG.BASE_URL}libros`, {
       headers: API_CONFIG.HEADERS,
     });
     return handleResponse<Book[]>(response);

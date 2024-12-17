@@ -4,7 +4,7 @@ import { handleResponse } from '../utils/apiUtils';
 
 export const getAuthors = async (): Promise<Author[]> => {
   try {
-    const response = await fetch(`${API_CONFIG.BASE_URL}/autores`, {
+    const response = await fetch(`${API_CONFIG.BASE_URL}autores`, {
       headers: API_CONFIG.HEADERS,
     });
     return handleResponse<Author[]>(response);
