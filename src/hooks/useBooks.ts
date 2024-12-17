@@ -13,7 +13,8 @@ export const useBooks = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const data = await getAllBooks();
+        const response = await fetch(`${API_URL}/libros`);
+        const data = await response.json();
         setBooks(data);
       } catch (err) {
         handleError(err);

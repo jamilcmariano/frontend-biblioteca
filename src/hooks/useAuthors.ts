@@ -13,7 +13,8 @@ export const useAuthors = () => {
   useEffect(() => {
     const fetchAuthors = async () => {
       try {
-        const data = await getAuthors();
+        const response = await fetch(`${API_URL}/autores`);
+        const data = await response.json();
         setAuthors(data);
       } catch (err) {
         handleError(err);
