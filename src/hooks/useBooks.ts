@@ -3,6 +3,8 @@ import { Book } from '../types';
 import { getAllBooks } from '../services/bookService';
 import { useError } from './useError';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export const useBooks = () => {
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);

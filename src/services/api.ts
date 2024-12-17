@@ -1,3 +1,5 @@
+import { Author, Book } from "../types";
+
 const API_BASE_URL = 'https://api-biblioteca-five.vercel.app'; // Replace with actual API URL
 
 export const getAuthors = async () => {
